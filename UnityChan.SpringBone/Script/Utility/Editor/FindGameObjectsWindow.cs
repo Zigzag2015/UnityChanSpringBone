@@ -8,10 +8,10 @@ namespace UTJ
 {
     public class FindGameObjectsWindow : EditorWindow
     {
-        [MenuItem("UTJ/名前で選択窓")]
+        [MenuItem("UTJ/FindGameObjectsWindow")]
         public static void ShowWindow()
         {
-            var window = GetWindow<FindGameObjectsWindow>("名前で選択");
+            var window = GetWindow<FindGameObjectsWindow>("FindGameObjectsWindow");
             window.OnShow();
         }
 
@@ -278,18 +278,18 @@ namespace UTJ
 
             var rowWidth = position.width - Spacing * 2f;
             var fieldPositions = GetTextFieldPositions(Spacing, Spacing, rowWidth, RowHeight, Spacing);
-            DoTextFieldWithClearButton(ref fieldPositions, "名前", ref objectPattern, RestartSearchCountdown, SearchNameField);
+            DoTextFieldWithClearButton(ref fieldPositions, "Object", ref objectPattern, RestartSearchCountdown, SearchNameField);
             fieldPositions.y += RowOffset;
-            DoTextFieldWithClearButton(ref fieldPositions, "無視", ref ignorePattern, RestartSearchCountdown);
+            DoTextFieldWithClearButton(ref fieldPositions, "Ignore", ref ignorePattern, RestartSearchCountdown);
             fieldPositions.y += RowOffset;
-            DoTextFieldWithClearButton(ref fieldPositions, "コンポーネント", ref componentPattern, RestartSearchCountdown);
+            DoTextFieldWithClearButton(ref fieldPositions, "Component", ref componentPattern, RestartSearchCountdown);
             fieldPositions.y += RowOffset;
 
             var rowRect = new Rect(fieldPositions.x, fieldPositions.y, rowWidth, RowHeight);
-            if (GUI.Button(rowRect, "選択")) { FindAndSelectObjects(); }
+            if (GUI.Button(rowRect, "Select")) { FindAndSelectObjects(); }
 
             rowRect.y += RowOffset;
-            var message = Selection.objects.Length.ToString() + " 個のオブジェクトを選択中";
+            var message = Selection.objects.Length.ToString() + " objects are seleted";
             GUI.Label(rowRect, message);
 
             if (isInitialShow)

@@ -6,10 +6,10 @@ namespace UTJ
 {
     public class SetObjectParentWindow : EditorWindow
     {
-        [MenuItem("UTJ/親子付け")]
+        [MenuItem("UTJ/SetObjectParentWindow")]
         public static void ShowWindow()
         {
-            GetWindow<SetObjectParentWindow>("親子付け");
+            GetWindow<SetObjectParentWindow>("SetObjectParentWindow");
         }
 
         // private
@@ -31,9 +31,9 @@ namespace UTJ
         private void OnGUI()
         {
             EditorGUILayout.Space();
-            newParent = EditorGUILayout.ObjectField("新しい親", newParent, typeof(Transform), true) as Transform;
+            newParent = EditorGUILayout.ObjectField("New Parent", newParent, typeof(Transform), true) as Transform;
             EditorGUILayout.Space();
-            if (GUILayout.Button("親子付け"))
+            if (GUILayout.Button("Reparent Selected Objects"))
             {
                 ReparentSelectedObjects();
             }
