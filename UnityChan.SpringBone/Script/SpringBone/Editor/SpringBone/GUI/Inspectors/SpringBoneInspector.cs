@@ -21,7 +21,7 @@ namespace UTJ
 
             var bone = (SpringBone)target;
 
-            if (GUILayout.Button("基点を選択", SpringBoneGUIStyles.ButtonStyle))
+            if (GUILayout.Button("Select Pivot Node", SpringBoneGUIStyles.ButtonStyle))
             {
                 Selection.objects = targets
                     .Select(item => ((SpringBone)item).pivotNode)
@@ -68,7 +68,7 @@ namespace UTJ
                 RenderAngleLimitVisualization();
             }
 
-            showOriginalInspector = EditorGUILayout.Toggle("標準インスペクター表示", showOriginalInspector);
+            showOriginalInspector = EditorGUILayout.Toggle("Show Original Inspector", showOriginalInspector);
             GUILayout.Space(Spacing);
             if (showOriginalInspector)
             {
@@ -237,28 +237,28 @@ namespace UTJ
             };
 
             var angleLimitProperties = new PropertyInfo[] {
-                new PropertyInfo("pivotNode", "基点"),
-                new PropertyInfo("angularStiffness", "回転の硬さ"),
+                new PropertyInfo("pivotNode", "Pivot Node"),
+                new PropertyInfo("angularStiffness", "Angular Stiffness"),
                 new AngleLimitPropertyInfo("yAngleLimits", "Y 軸角度制限"),
                 new AngleLimitPropertyInfo("zAngleLimits", "Z 軸角度制限")
             };
 
             var lengthLimitProperties = new PropertyInfo[] {
-                new PropertyInfo("lengthLimitTargets", "ターゲット")
+                new PropertyInfo("lengthLimitTargets", "Length Limit Targets")
             };
 
             var collisionProperties = new PropertyInfo[] {
-                new PropertyInfo("radius", "半径"),
-                new PropertyInfo("sphereColliders", "球体"),
-                new PropertyInfo("capsuleColliders", "カプセル"),
-                new PropertyInfo("panelColliders", "板")
+                new PropertyInfo("radius", "Radius"),
+                new PropertyInfo("sphereColliders", "Sphere Colliders"),
+                new PropertyInfo("capsuleColliders", "Capsule Colliders"),
+                new PropertyInfo("panelColliders", "Panel Colliders")
             };
 
             propertySets = new PropertySet[] {
                 new PropertySet("力", forceProperties), 
                 new PropertySet("角度制限", angleLimitProperties),
                 new PropertySet("距離制限", lengthLimitProperties),
-                new PropertySet("当たり判定", collisionProperties),
+                new PropertySet("Collision", collisionProperties),
             };
 
             foreach (var set in propertySets)
